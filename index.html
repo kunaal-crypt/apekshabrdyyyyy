@@ -8,21 +8,21 @@
   <!-- Google Fonts & Canvas Confetti -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
-    /* ==================== ELEGANT BROWN & GOLD PALETTE ==================== */
+    /* ==================== ULTRA-LUXURY GLASS & GOLD THEME ==================== */
     :root {
-      --bg-dark: #1E100A;
-      --bg-card: #2E1A11;
-      --accent-warm: #4A2B1B;
+      --bg-dark: #120905;
+      --glass-card: rgba(45, 25, 16, 0.65);
+      --glass-border: rgba(229, 184, 128, 0.35);
       --accent-gold: #E5B880;
+      --accent-glow: #FFD9A0;
       --accent-mocha: #8C5A3C;
-      --accent-cream: #FDF6EE;
-      --text-light: #F7E7D6;
-      --text-muted: #B89B88;
-      --sidebar-width: 290px;
+      --text-cream: #FDF6EE;
+      --text-muted: #C4A590;
+      --sidebar-width: 300px;
     }
 
     * {
@@ -33,8 +33,8 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      background: radial-gradient(circle at top right, #2E1A11 0%, #120905 100%);
+      color: var(--text-cream);
       min-height: 100vh;
       overflow-x: hidden;
       display: flex;
@@ -45,8 +45,8 @@
       overflow: hidden;
     }
 
-    /* ==================== FLOATING SPARKLES & BALLOONS ==================== */
-    .sparkle-container {
+    /* ==================== GOLDEN DUST & BALLOONS ==================== */
+    .particle-container {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
@@ -55,54 +55,27 @@
       overflow: hidden;
     }
 
-    .sparkle {
+    .dust-particle {
       position: absolute;
       background: var(--accent-gold);
       border-radius: 50%;
-      animation: floatSparkle 10s linear infinite;
-      box-shadow: 0 0 10px var(--accent-gold);
+      box-shadow: 0 0 8px var(--accent-gold);
+      animation: floatDust 12s infinite linear;
     }
 
-    @keyframes floatSparkle {
-      0% { transform: translateY(105vh) scale(0.3); opacity: 0; }
-      30% { opacity: 0.9; }
+    @keyframes floatDust {
+      0% { transform: translateY(105vh) scale(0.2); opacity: 0; }
+      20% { opacity: 0.9; }
       80% { opacity: 0.9; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+      100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
     }
 
-    .balloon {
-      position: absolute;
-      width: 45px;
-      height: 55px;
-      background: linear-gradient(135deg, #8C5A3C 0%, #E5B880 100%);
-      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-      animation: floatUp 14s linear infinite;
-      opacity: 0.6;
-    }
-
-    .balloon::after {
-      content: "";
-      position: absolute;
-      bottom: -14px;
-      left: 21px;
-      width: 2px;
-      height: 18px;
-      background: rgba(253, 246, 238, 0.4);
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-      20% { opacity: 0.7; }
-      80% { opacity: 0.7; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-
-    /* ==================== 6-DIGIT PASSCODE SCREEN ==================== */
+    /* ==================== PASSCODE SCREEN ==================== */
     .password-overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: radial-gradient(circle, #3D2317 0%, #120905 100%);
+      background: radial-gradient(circle, #2E1A11 0%, #0A0402 100%);
       z-index: 9999;
       display: flex;
       justify-content: center;
@@ -111,38 +84,38 @@
     }
 
     .password-card {
-      background: rgba(46, 26, 17, 0.9);
+      background: rgba(35, 18, 11, 0.75);
       padding: 55px 45px;
-      border-radius: 32px;
+      border-radius: 35px;
       text-align: center;
       border: 2px solid var(--accent-gold);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(229, 184, 128, 0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 40px rgba(229, 184, 128, 0.25);
       max-width: 460px;
       width: 90%;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
     }
 
     .password-card h2 {
       font-family: 'Cinzel', serif;
-      font-size: 2.3rem;
+      font-size: 2.4rem;
       color: var(--accent-gold);
       margin-bottom: 12px;
+      text-shadow: 0 0 10px rgba(229, 184, 128, 0.3);
     }
 
     .password-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 28px;
-      line-height: 1.6;
     }
 
     .pin-input {
       width: 100%;
       padding: 18px;
       border: 2px solid var(--accent-gold);
-      border-radius: 16px;
+      border-radius: 18px;
       background: var(--bg-dark);
-      color: var(--accent-cream);
+      color: var(--text-cream);
       font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       letter-spacing: 12px;
@@ -153,7 +126,7 @@
     }
 
     .pin-input:focus {
-      box-shadow: 0 0 25px rgba(229, 184, 128, 0.4);
+      box-shadow: 0 0 30px rgba(229, 184, 128, 0.5);
     }
 
     .unlock-btn {
@@ -162,16 +135,16 @@
       color: var(--bg-dark);
       border: none;
       padding: 18px;
-      border-radius: 16px;
+      border-radius: 18px;
       font-size: 1.15rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .unlock-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(229, 184, 128, 0.4);
+      box-shadow: 0 10px 30px rgba(229, 184, 128, 0.5);
     }
 
     .error-msg {
@@ -181,11 +154,12 @@
       display: none;
     }
 
-    /* ==================== SIDEBAR NAVIGATION ==================== */
+    /* ==================== SIDEBAR ==================== */
     .sidebar {
       width: var(--sidebar-width);
-      background-color: var(--bg-card);
-      border-right: 1px solid rgba(229, 184, 128, 0.2);
+      background: rgba(30, 16, 10, 0.85);
+      border-right: 1px solid var(--glass-border);
+      backdrop-filter: blur(15px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -193,18 +167,14 @@
       position: fixed;
       height: 100vh;
       z-index: 10;
-      box-shadow: 5px 0 25px rgba(0,0,0,0.5);
-    }
-
-    .brand {
-      text-align: center;
-      margin-bottom: 25px;
+      box-shadow: 5px 0 30px rgba(0,0,0,0.6);
     }
 
     .brand h1 {
       font-family: 'Sacramento', cursive;
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: var(--accent-gold);
+      text-align: center;
     }
 
     .brand p {
@@ -212,7 +182,8 @@
       color: var(--text-muted);
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-top: 5px;
+      text-align: center;
+      margin-top: 4px;
     }
 
     .nav-links {
@@ -220,20 +191,21 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-top: 20px;
     }
 
     .nav-btn {
       background: none;
-      border: none;
-      padding: 13px 18px;
+      border: 1px solid transparent;
+      padding: 14px 18px;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--text-light);
+      color: var(--text-cream);
       cursor: pointer;
-      border-radius: 14px;
-      transition: all 0.3s ease;
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -241,29 +213,41 @@
     }
 
     .nav-btn:hover, .nav-btn.active {
-      background-color: var(--accent-warm);
+      background: rgba(229, 184, 128, 0.15);
+      border-color: var(--accent-gold);
       color: var(--accent-gold);
-      transform: translateX(6px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
-    /* Music Player Widget */
+    /* Audio Visualizer Widget */
     .music-widget {
-      background: var(--bg-dark);
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(229, 184, 128, 0.3);
+      background: rgba(18, 9, 5, 0.7);
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--glass-border);
       text-align: center;
     }
 
-    .music-widget p {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent-gold);
+    .visualizer-box {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 4px;
+      height: 20px;
+      margin-top: 10px;
+    }
+
+    .v-bar {
+      width: 4px;
+      height: 6px;
+      background: var(--accent-gold);
+      border-radius: 2px;
+      transition: height 0.2s ease;
     }
 
     .music-btn {
-      background-color: var(--accent-gold);
+      background: var(--accent-gold);
       color: var(--bg-dark);
       border: none;
       padding: 10px 16px;
@@ -276,12 +260,8 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 12px;
       transition: transform 0.2s ease;
-    }
-
-    .music-btn:hover {
-      transform: scale(1.04);
     }
 
     /* ==================== MAIN VIEWPORT ==================== */
@@ -295,17 +275,15 @@
 
     .page-section {
       display: none;
-      animation: fadeIn 0.8s ease-in-out forwards;
+      animation: smoothFade 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
       max-width: 950px;
       margin: 0 auto;
     }
 
-    .page-section.active {
-      display: block;
-    }
+    .page-section.active { display: block; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+    @keyframes smoothFade {
+      from { opacity: 0; transform: translateY(25px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -313,35 +291,32 @@
       font-family: 'Cinzel', serif;
       font-size: 2.8rem;
       color: var(--accent-gold);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .section-subtitle {
       font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 35px;
-      line-height: 1.6;
     }
 
-    /* ==================== CONTENT CARDS ==================== */
-    .content-card {
-      background: var(--bg-card);
-      border-radius: 28px;
+    /* ==================== GLASS CARDS WITH TILT ==================== */
+    .glass-card {
+      background: var(--glass-card);
+      border-radius: 30px;
       padding: 45px;
-      border: 1px solid rgba(229, 184, 128, 0.25);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
       margin-bottom: 35px;
       line-height: 1.95;
       font-size: 1.05rem;
-      color: var(--accent-cream);
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
-    .content-card p {
-      margin-bottom: 22px;
-    }
-
-    .content-card p:last-child {
-      margin-bottom: 0;
+    .glass-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
     }
 
     .highlight-quote {
@@ -354,92 +329,100 @@
       margin: 28px 0;
     }
 
-    /* ==================== INTERACTIVE CAKE WIDGET ==================== */
+    /* ==================== 3D LAYERED CAKE CEREMONY ==================== */
     .cake-section {
       text-align: center;
-      background: var(--bg-card);
+      background: var(--glass-card);
       padding: 50px;
-      border-radius: 30px;
-      border: 1px solid var(--accent-gold);
+      border-radius: 32px;
+      border: 1px solid var(--glass-border);
       margin-bottom: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(16px);
     }
 
-    .cake {
-      width: 160px;
-      height: 100px;
-      background: #4A2B1B;
-      border-radius: 12px 12px 0 0;
+    .cake-container {
+      width: 180px;
+      height: 110px;
+      background: linear-gradient(135deg, #4A2B1B 0%, #2E1A11 100%);
+      border-radius: 16px 16px 0 0;
       position: relative;
       margin: 60px auto 30px auto;
-      box-shadow: inset 0 12px 0 #6B3A21, inset 0 24px 0 #4A2B1B, inset 0 36px 0 #6B3A21;
+      box-shadow: inset 0 12px 0 #6B3A21, inset 0 24px 0 #4A2B1B, 0 15px 25px rgba(0,0,0,0.5);
     }
 
-    .candle {
-      width: 12px;
-      height: 42px;
-      background: var(--accent-gold);
+    .candles-row {
+      display: flex;
+      justify-content: space-around;
+      width: 120px;
       position: absolute;
       top: -42px;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 4px;
     }
 
-    .flame {
-      width: 16px;
-      height: 24px;
+    .candle-stick {
+      width: 10px;
+      height: 42px;
+      background: var(--accent-gold);
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .flame-light {
+      width: 14px;
+      height: 22px;
       background: #FF9F1C;
       border-radius: 50% 50% 20% 20%;
       position: absolute;
-      top: -24px;
+      top: -22px;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: 0 0 18px #FF9F1C;
+      box-shadow: 0 0 15px #FF9F1C;
       animation: flicker 0.6s infinite alternate;
       cursor: pointer;
     }
 
-    .flame.blown { display: none; }
+    .flame-light.out { display: none; }
 
     @keyframes flicker {
       0% { transform: translateX(-50%) scale(1); }
-      100% { transform: translateX(-50%) scale(1.18); }
+      100% { transform: translateX(-50%) scale(1.15); }
     }
 
-    .blow-btn {
+    .action-btn {
       background: linear-gradient(135deg, var(--accent-gold), var(--accent-mocha));
       color: var(--bg-dark);
       border: none;
-      padding: 15px 36px;
+      padding: 16px 38px;
       font-size: 1rem;
-      font-weight: 700;
+      font-weight: 800;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
       transition: all 0.3s ease;
     }
 
-    .blow-btn:hover { transform: scale(1.05); }
+    .action-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(229, 184, 128, 0.4);
+    }
 
-    /* ==================== COMPLEX ANIMATED MEDICAL SECTION ==================== */
+    /* ==================== 3D DOCTOR PLAQUE & ECG ==================== */
     .doctor-interactive-zone {
-      background: var(--bg-card);
-      border-radius: 30px;
-      padding: 40px;
+      background: var(--glass-card);
+      border-radius: 32px;
+      padding: 45px;
       text-align: center;
       border: 1px solid var(--accent-gold);
       margin-bottom: 35px;
-      position: relative;
-      overflow: hidden;
+      backdrop-filter: blur(16px);
     }
 
-    /* Animated Heartbeat ECG Monitor */
     .ecg-box {
       width: 100%;
       height: 70px;
-      background: rgba(18, 9, 5, 0.6);
-      border-radius: 16px;
+      background: rgba(10, 4, 2, 0.8);
+      border-radius: 18px;
       border: 1px solid rgba(229, 184, 128, 0.3);
       position: relative;
       overflow: hidden;
@@ -474,63 +457,70 @@
       100% { left: 110%; opacity: 0; }
     }
 
-    /* 3D Pulsing Medical Heart */
-    .heart-3d-wrapper {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px auto;
-      cursor: pointer;
-    }
-
-    .heart-3d {
-      width: 60px;
-      height: 60px;
-      background: #D93838;
-      position: relative;
-      transform: rotate(-45deg);
-      margin: 20px auto;
-      animation: pulseHeart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-      box-shadow: 0 0 30px rgba(217, 56, 56, 0.6);
-    }
-
-    .heart-3d::before, .heart-3d::after {
-      content: "";
-      width: 60px;
-      height: 60px;
-      background: #D93838;
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .heart-3d::before { top: -30px; left: 0; }
-    .heart-3d::after { left: 30px; top: 0; }
-
-    @keyframes pulseHeart {
-      0% { transform: rotate(-45deg) scale(0.95); }
-      50% { transform: rotate(-45deg) scale(1.15); }
-      100% { transform: rotate(-45deg) scale(0.95); }
-    }
-
-    .stethoscope-badge {
+    .doc-plaque {
       display: inline-block;
-      background: var(--bg-dark);
-      padding: 10px 24px;
-      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(229, 184, 128, 0.2) 0%, rgba(45, 25, 16, 0.8) 100%);
+      padding: 16px 36px;
+      border-radius: 22px;
       border: 1px solid var(--accent-gold);
       color: var(--accent-gold);
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-top: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      box-shadow: 0 0 25px rgba(229, 184, 128, 0.2);
     }
 
-    /* ==================== BLOOMING FLOWER BOUQUET WIDGET ==================== */
+    /* ==================== 3D ENVELOPE LETTER ==================== */
+    .envelope-3d {
+      background: rgba(30, 16, 10, 0.8);
+      border-radius: 26px;
+      border: 1px solid var(--glass-border);
+      padding: 30px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      margin-bottom: 35px;
+    }
+
+    .envelope-3d:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-5px);
+    }
+
+    .envelope-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .envelope-head h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-size: 1.3rem;
+    }
+
+    .letter-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
+      line-height: 1.95;
+      color: var(--text-cream);
+    }
+
+    .envelope-3d.open .letter-body {
+      max-height: 1500px;
+      transition: max-height 0.8s ease-in-out;
+      margin-top: 25px;
+      border-top: 1px dashed var(--accent-gold);
+      padding-top: 20px;
+    }
+
+    /* ==================== BLOOMING FLOWER WIDGET ==================== */
     .flower-zone {
       text-align: center;
-      background: var(--bg-card);
+      background: var(--glass-card);
       padding: 50px;
-      border-radius: 30px;
-      border: 1px solid var(--accent-gold);
+      border-radius: 32px;
+      border: 1px solid var(--glass-border);
       margin-bottom: 35px;
     }
 
@@ -544,11 +534,11 @@
 
     .petal {
       position: absolute;
-      width: 50px;
-      height: 80px;
-      background: linear-gradient(135deg, #E5B880 0%, #8C5A3C 100%);
+      width: 45px;
+      height: 75px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mocha) 100%);
       border-radius: 50px 50px 0 0;
-      top: 10px; left: 35px;
+      top: 10px; left: 37px;
       transform-origin: bottom center;
       transition: transform 1s ease-in-out;
       opacity: 0.9;
@@ -565,12 +555,12 @@
 
     .flower-center {
       position: absolute;
-      width: 40px; height: 40px;
-      background: #FDF6EE;
+      width: 38px; height: 38px;
+      background: var(--text-cream);
       border-radius: 50%;
-      top: 40px; left: 40px;
+      top: 41px; left: 41px;
       z-index: 5;
-      box-shadow: 0 0 15px var(--accent-cream);
+      box-shadow: 0 0 15px var(--accent-gold);
     }
 
     .flower-wrapper.bloomed .petal-1 { transform: rotate(0deg) translateY(-15px) scale(1.1); }
@@ -581,43 +571,17 @@
     .flower-wrapper.bloomed .petal-6 { transform: rotate(225deg) translateY(-15px) scale(1.1); }
     .flower-wrapper.bloomed .petal-7 { transform: rotate(270deg) translateY(-15px) scale(1.1); }
     .flower-wrapper.bloomed .petal-8 { transform: rotate(315deg) translateY(-15px) scale(1.1); }
-
-    /* ==================== INTERACTIVE TRIVIA GAME ==================== */
-    .quiz-card {
-      background: var(--bg-card);
-      border-radius: 28px;
-      padding: 40px;
-      border: 1px solid rgba(229, 184, 128, 0.25);
-      margin-bottom: 30px;
-    }
-
-    .quiz-option {
-      background: var(--bg-dark);
-      padding: 15px 20px;
-      border-radius: 16px;
-      border: 1px solid rgba(229, 184, 128, 0.3);
-      margin-top: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
-    }
-
-    .quiz-option:hover {
-      background: var(--accent-warm);
-      border-color: var(--accent-gold);
-      transform: translateX(5px);
-    }
   </style>
 </head>
 <body class="locked">
 
-  <!-- Floating Sparkles & Balloons -->
-  <div class="sparkle-container" id="sparkle-container"></div>
+  <!-- Floating Particles Background -->
+  <div class="particle-container" id="particle-container"></div>
 
   <!-- Audio Element -->
   <audio id="bg-music" src="song.mp3" loop></audio>
 
-  <!-- ================= 6-DIGIT PASSCODE SCREEN ================= -->
+  <!-- PASSCODE OVERLAY -->
   <div class="password-overlay" id="password-screen">
     <div class="password-card">
       <h2>Welcome Apeksha ✨</h2>
@@ -626,11 +590,11 @@
       <input type="password" id="pin-input" class="pin-input" maxlength="6" placeholder="******" onkeydown="if(event.key === 'Enter') checkPin()">
       <p id="error-msg" class="error-msg">Incorrect Passcode! Try 191024</p>
       
-      <button onclick="checkPin()" class="unlock-btn">Unlock Surprise 🌸</button>
+      <button onclick="checkPin()" class="unlock-btn">Unlock Experience 🌸</button>
     </div>
   </div>
 
-  <!-- Sidebar Navigation -->
+  <!-- Sidebar -->
   <aside class="sidebar">
     <div>
       <div class="brand">
@@ -646,7 +610,7 @@
         </li>
         <li>
           <button class="nav-btn" onclick="switchPage('letter', this)">
-            <span>📜</span> Friendship Letter
+            <span>💌</span> Friendship Letter
           </button>
         </li>
         <li>
@@ -667,9 +631,17 @@
       </ul>
     </div>
 
-    <!-- Music Control Widget -->
+    <!-- Music Player Widget -->
     <div class="music-widget">
-      <p>Your Birthday Soundtrack</p>
+      <p style="font-size: 0.8rem; color: var(--accent-gold);">Your Birthday Track</p>
+      
+      <div class="visualizer-box">
+        <div class="v-bar" id="bar1"></div>
+        <div class="v-bar" id="bar2"></div>
+        <div class="v-bar" id="bar3"></div>
+        <div class="v-bar" id="bar4"></div>
+      </div>
+
       <button class="music-btn" onclick="toggleAudio()">
         <span id="play-icon">❚❚</span> <span id="play-text">Playing Song</span>
       </button>
@@ -679,28 +651,30 @@
   <!-- Main Viewport -->
   <main class="main-content">
 
-    <!-- PAGE 1: BIRTHDAY WISHES & CAKE CEREMONY -->
+    <!-- PAGE 1: HOME -->
     <section id="home" class="page-section active">
       <h2 class="section-title">Happy Belated Birthday, Apeksha!</h2>
-      <p class="section-subtitle">Celebrating October 19th — A day honoring a truly wonderful soul.</p>
+      <p class="section-subtitle">Celebrating October 19th — Honoring an extraordinary soul.</p>
 
       <!-- Cake Cutting Interactive Widget -->
       <div class="cake-section">
-        <h3 style="color: var(--accent-gold); font-family: 'Cinzel', serif; margin-bottom: 10px;">Make A Special Wish!</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Click the button below to blow out the candle and cut your birthday cake!</p>
+        <h3 style="color: var(--accent-gold); font-family: 'Cinzel', serif; margin-bottom: 10px;">Make A Birthday Wish!</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Click the button below to blow out the candles and cut your cake!</p>
         
-        <div class="cake">
-          <div class="candle">
-            <div class="flame" id="flame"></div>
+        <div class="cake-container">
+          <div class="candles-row">
+            <div class="candle-stick"><div class="flame-light" id="f1"></div></div>
+            <div class="candle-stick"><div class="flame-light" id="f2"></div></div>
+            <div class="candle-stick"><div class="flame-light" id="f3"></div></div>
           </div>
         </div>
 
-        <button class="blow-btn" onclick="blowCandle()">Blow Candle & Cut Cake 🎂</button>
+        <button class="action-btn" onclick="blowCandles()">Blow Candles & Cut Cake 🎂</button>
       </div>
 
-      <div class="content-card">
+      <div class="glass-card">
         <p>
-          Dearest Apeksha, even though October 19th just passed yesterday, I wanted to make sure your birthday month continues to feel magical, elegant, and special. Birthdays aren't just about celebrating a single 24-hour mark on the calendar; they are about celebrating the beautiful presence of someone who brings genuine grace, decency, and positivity into the world.
+          Dearest Apeksha, even though October 19th just passed yesterday, I wanted to make sure your birthday celebration continues to feel magical, elegant, and special. Birthdays aren't just about celebrating a single 24-hour mark on the calendar; they are about celebrating the beautiful presence of someone who brings genuine grace, decency, and positivity into the world.
         </p>
         
         <div class="highlight-quote">
@@ -718,59 +692,43 @@
       <h2 class="section-title">A Letter To A Decent Friend</h2>
       <p class="section-subtitle">Reflecting on 5 years as batchmates and reconnecting after 12th grade.</p>
 
-      <div class="content-card">
-        <p>
-          Dear Apeksha,
-        </p>
-        <p>
-          Looking back, it’s honestly amazing how life works out. We were in the same school batch for five whole years—from 6th grade all the way through 10th grade. Even though we weren't in the exact same section or hostel room and didn't talk deeply back then, we shared the exact same environment, hallways, and school memories for years.
-        </p>
-        <p>
-          Now, after passing out of 12th grade, getting back in touch with you and having our recent conversations has been such a pleasant experience. Getting to know the person behind the quiet, graceful girl I saw back in school has been genuinely uplifting. You are, without a single doubt, a 100% genuine, extremely nice, and deeply respectful girl. In a world where sincere people can be hard to find, your decency shines effortlessly.
-        </p>
-
-        <div class="highlight-quote">
-          "I might not have known you thoroughly back during our school days, but whatever I know of you today proves that you are one of the most decent, grounded, and pure-hearted souls."
+      <div class="envelope-3d" onclick="this.classList.toggle('open')">
+        <div class="envelope-head">
+          <h3>💌 Click To Unseal Your Friendship Letter</h3>
+          <span style="color: var(--accent-gold); font-weight: 600;">Open Letter ➔</span>
         </div>
-
-        <p>
-          I want you to know that I truly value this reconnected bond. I sincerely hope that regardless of where life takes us, where our studies lead us, or how busy the future gets, we remain genuine friends for a lifetime.
-        </p>
-      </div>
-
-      <!-- Quick Interactive Quiz -->
-      <div class="quiz-card">
-        <h3 style="color: var(--accent-gold); font-family: 'Cinzel', serif; margin-bottom: 10px;">Quick Trivia Moment 💡</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">How many years were we batchmates in school?</p>
-        
-        <div class="quiz-option" onclick="answerQuiz(false)">A) 2 Years</div>
-        <div class="quiz-option" onclick="answerQuiz(true)">B) 5 Years (6th to 10th Grade) ✨</div>
-        <div class="quiz-option" onclick="answerQuiz(false)">C) 7 Years</div>
+        <div class="letter-body">
+          <p>Dear Apeksha,</p>
+          <p>
+            Looking back, it’s honestly amazing how life works out. We were in the same school batch for five whole years—from 6th grade all the way through 10th grade. Even though we weren't in the exact same section or hostel room and didn't talk deeply back then, we shared the exact same environment, hallways, and school memories for years.
+          </p>
+          <p>
+            Now, after passing out of 12th grade, getting back in touch with you and having our recent conversations has been such a pleasant experience. Getting to know the person behind the quiet, graceful girl I saw back in school has been genuinely uplifting. You are, without a single doubt, a 100% genuine, extremely nice, and deeply respectful girl. In a world where sincere people can be hard to find, your decency shines effortlessly.
+          </p>
+          <div class="highlight-quote">
+            "I might not have known you thoroughly back during our school days, but whatever I know of you today proves that you are one of the most decent, grounded, and pure-hearted souls."
+          </div>
+          <p>
+            I want you to know that I truly value this reconnected bond. I sincerely hope that regardless of where life takes us, where our studies lead us, or how busy the future gets, we remain genuine friends for a lifetime.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- PAGE 3: THE FUTURE DOCTOR (ANIMATED MEDICAL ZONE) -->
+    <!-- PAGE 3: FUTURE DOCTOR -->
     <section id="doctor" class="page-section">
       <h2 class="section-title">The Future Dr. Apeksha Pandey 🩺</h2>
       <p class="section-subtitle">Celebrating your noble dream and dedicated heart.</p>
 
-      <!-- Animated ECG & 3D Medical Heart -->
       <div class="doctor-interactive-zone">
         <div class="ecg-box">
-          <div class="ecg-line">
-            <div class="ecg-pulse"></div>
-          </div>
+          <div class="ecg-line"><div class="ecg-pulse"></div></div>
         </div>
 
-        <div class="heart-3d-wrapper" onclick="triggerHeartBeat()">
-          <div class="heart-3d"></div>
-        </div>
-
-        <div class="stethoscope-badge">🩺 Future Medical Professional in the Making</div>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">(Click the pulsing heart above!)</p>
+        <div class="doc-plaque">🩺 Dr. Apeksha Pandey</div>
       </div>
 
-      <div class="content-card">
+      <div class="glass-card">
         <p>
           Apeksha, when I learned about your ambition to become a doctor, my respect for you grew even higher. Choosing the medical field is not just selecting a degree—it is choosing a noble life path of empathy, selflessness, and lifelong dedication to healing human lives.
         </p>
@@ -788,14 +746,14 @@
       </div>
     </section>
 
-    <!-- PAGE 4: BLOOMING FLOWER BOUQUET -->
+    <!-- PAGE 4: FLOWERS -->
     <section id="flowers" class="page-section">
       <h2 class="section-title">Flowers For You 🌸</h2>
       <p class="section-subtitle">A digital bloom crafted in your favorite brown & gold aesthetic.</p>
 
       <div class="flower-zone">
         <h3 style="color: var(--accent-gold); font-family: 'Cinzel', serif; margin-bottom: 10px;">Click The Flower To Bloom!</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">A delicate digital flower created just for your birthday.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">A delicate digital bloom created just for your birthday.</p>
 
         <div class="flower-wrapper" id="flower" onclick="bloomFlower()">
           <div class="petal petal-1"></div>
@@ -810,19 +768,19 @@
         </div>
       </div>
 
-      <div class="content-card">
+      <div class="glass-card">
         <p>
-          Flowers represent grace, quiet elegance, and beauty—qualities that reflect your personality effortlessly. Just as a flower blooms at its own perfect pace, may your journey into womanhood, higher education, and your medical career bloom with pure beauty and strength.
+          Flowers represent grace, quiet elegance, and beauty—qualities that reflect your personality effortlessly. Just as a flower blooms at its own perfect pace, may your journey into higher education and your medical career bloom with pure beauty and strength.
         </p>
       </div>
     </section>
 
-    <!-- PAGE 5: BEST OF LUCK & FUTURE WISHES -->
+    <!-- PAGE 5: FUTURE WISHES -->
     <section id="future" class="page-section">
       <h2 class="section-title">Wishing You Future Greatness</h2>
       <p class="section-subtitle">May your upcoming years be as bright as your potential.</p>
 
-      <div class="content-card">
+      <div class="glass-card">
         <p>
           As you navigate this crucial phase after 12th grade, remember that the world is full of opportunities for someone with your dedication. I wish you grand success in every exam, every medical entrance, and every milestone you aim for.
         </p>
@@ -878,13 +836,15 @@
       btn.classList.add('active');
     }
 
-    // ================= AUDIO CONTROL =================
+    // ================= AUDIO & VISUALIZER =================
     const audio = document.getElementById('bg-music');
     let isPlaying = false;
+    let visInterval;
 
     function startAudio() {
       audio.play().then(() => {
         isPlaying = true;
+        animateVisualizer();
       }).catch(err => console.log("Autoplay blocked by browser. Click Play manually."));
     }
 
@@ -897,76 +857,62 @@
         playIcon.textContent = '▶';
         playText.textContent = 'Play Song';
         isPlaying = false;
+        clearInterval(visInterval);
       } else {
         audio.play();
         playIcon.textContent = '❚❚';
         playText.textContent = 'Playing Song';
         isPlaying = true;
+        animateVisualizer();
       }
     }
 
-    // ================= CAKE CEREMONY & CONFETTI =================
-    function blowCandle() {
-      document.getElementById('flame').classList.add('blown');
+    function animateVisualizer() {
+      visInterval = setInterval(() => {
+        for(let i = 1; i <= 4; i++) {
+          const bar = document.getElementById('bar' + i);
+          if(bar) bar.style.height = (Math.random() * 16 + 4) + 'px';
+        }
+      }, 200);
+    }
+
+    // ================= CAKE CEREMONY =================
+    function blowCandles() {
+      document.getElementById('f1').classList.add('out');
+      document.getElementById('f2').classList.add('out');
+      document.getElementById('f3').classList.add('out');
       triggerConfetti();
-      alert("🎉 Wish made, candle blown! Happy Birthday Apeksha!");
+      alert("🎉 Wish made, candles blown, and cake cut! Happy Birthday Apeksha!");
     }
 
     function triggerConfetti() {
       confetti({
-        particleCount: 120,
-        spread: 80,
+        particleCount: 140,
+        spread: 85,
         origin: { y: 0.6 }
       });
     }
 
-    // ================= INTERACTIVE FLOWER & HEART LOGIC =================
     function bloomFlower() {
       document.getElementById('flower').classList.toggle('bloomed');
       triggerConfetti();
     }
 
-    function triggerHeartBeat() {
-      triggerConfetti();
-      alert("🩺 Here's to the heartbeat of a future Doctor!");
-    }
-
-    function answerQuiz(isCorrect) {
-      if(isCorrect) {
-        triggerConfetti();
-        alert("Correct! 5 years as school batchmates from 6th to 10th grade! ✨");
-      } else {
-        alert("Oops! Try again 😉");
+    // ================= FLOATING PARTICLES =================
+    function createDust() {
+      const container = document.getElementById('particle-container');
+      for (let i = 0; i < 30; i++) {
+        const dust = document.createElement('div');
+        dust.classList.add('dust-particle');
+        dust.style.width = (Math.random() * 4 + 2) + 'px';
+        dust.style.height = dust.style.width;
+        dust.style.left = Math.random() * 100 + 'vw';
+        dust.style.animationDuration = (Math.random() * 6 + 6) + 's';
+        dust.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(dust);
       }
     }
-
-    // ================= FLOATING SPARKLES & BALLOONS GENERATOR =================
-    function createElements() {
-      const container = document.getElementById('sparkle-container');
-      
-      // Create Sparkles
-      for (let i = 0; i < 25; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        sparkle.style.width = (Math.random() * 4 + 2) + 'px';
-        sparkle.style.height = sparkle.style.width;
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.animationDuration = (Math.random() * 6 + 6) + 's';
-        sparkle.style.animationDelay = (Math.random() * 5) + 's';
-        container.appendChild(sparkle);
-      }
-
-      // Create Balloons
-      for (let i = 0; i < 12; i++) {
-        const balloon = document.createElement('div');
-        balloon.classList.add('balloon');
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.animationDuration = (Math.random() * 6 + 8) + 's';
-        balloon.style.animationDelay = (Math.random() * 5) + 's';
-        container.appendChild(balloon);
-      }
-    }
-    createElements();
+    createDust();
   </script>
 </body>
-  </html>
+</html>
